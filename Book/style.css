@@ -1,0 +1,11 @@
+/* style */
+
+#overlay {
+    display: none;
+    position: absolute;
+}
+
+#bookDetails {
+    display: flex;
+    flex-direction: column;
+}
