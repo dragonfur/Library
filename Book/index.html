@@ -8,39 +8,54 @@
     <title>Library</title>
 </head>
 <body>
-    
-    <table id="myTable">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Pages</th>
-                <th>Read?</th>
-            </tr>
-        </thead>
-        <tbody class="theLibrary">
-
-        </tbody>
-    </table>
-    <button id="AddNewBook">
-        Add book
-    </button>
+    <div class="tophalf">
+        <div class="header">
+            <img id="header__logo" src="img/bookshelf.svg" alt="bookshelf logo">
+            <h1 class="header__title">The Library</h1>
+        </div>
+        <div class="info">Change your book status from read to unread, and vice versa, by clicking on it!</div>
+    </div>
+    <div class="bottomhalf">
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Read?</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td>
+                        <div class="addBookAlign">
+                            <button id="AddNewBook">
+                                Add book...
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+            <tbody class="theLibrary">
+            </tbody>
+        </table>
+    </div>
     <div id="overlay">
-        <form action="" id="bookDetails" onsubmit="return false">
-            <label for="bookTitle">Title:</label>
-            <input type="text" name="bTitle" id="bookTitle" placeholder="Your book...">
-
-            <label for="bookAuthor">Author:</label>
-            <input type="text" name="bAuthor" id="bookAuthor" placeholder="Author...">
-
-            <label for="bookPages">Number of pages:</label>
-            <input type="number" name="bPages" id="bookPages" placeholder="100...">
-
-            <label for="bookRead">Read?</label>
-            <input type="checkbox" name="bRead" id="bookRead">
-
-            <button type="submit" id="theSubmitButton">Submit</button>
-        </form>
+        <div class="container">
+            <form action="" id="bookDetails" onsubmit="return false">
+                <label for="bookTitle">Title:</label>
+                <input type="text" name="bTitle" id="bookTitle" placeholder="Your book...">
+                <label for="bookAuthor">Author:</label>
+                <input type="text" name="bAuthor" id="bookAuthor" placeholder="Author...">
+                <label for="bookPages">Number of pages:</label>
+                <input type="number" name="bPages" id="bookPages" placeholder="100..." min="0">
+                <div class="hasBeenRead">
+                    <label for="bookRead">Read?</label>
+                    <input type="checkbox" name="bRead" id="bookRead">
+                </div>
+                <button type="submit" id="theSubmitButton">Submit</button>
+            </form>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

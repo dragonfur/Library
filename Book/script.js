@@ -13,7 +13,7 @@ let myLibrary = [
     {
         title: "The Hobbit",
         author: "J.R.R Tolkien",
-        pages: "297",
+        pages: "310",
         read: "true"
     }
 ]
@@ -58,10 +58,18 @@ function addBookToLibrary(array) {
         cell.appendChild(readCheckbox)
         row.appendChild(cell)
         //Delete button
-        deleteButton = document.createElement("input")
-        deleteButton.setAttribute("type", "button")
+        cell = document.createElement("td")
+        buttonContainer = document.createElement("div")
+        deleteButton = document.createElement("button")
+        const trashButton = document.createElement("img")
+        trashButton.setAttribute("src", "img/delete.svg")
+        deleteButton.appendChild(trashButton)
+        deleteButton.setAttribute("id", "aDeleteButton")
+        buttonContainer.setAttribute("class", "theDeleteButton")
         deleteButton.setAttribute("onclick", "deleteRow(this)")
-        row.appendChild(deleteButton)
+        buttonContainer.appendChild(deleteButton)
+        cell.appendChild(buttonContainer)
+        row.appendChild(cell)
         library.appendChild(row)
         myLibrary = []
     }  
@@ -70,7 +78,7 @@ function addBookToLibrary(array) {
 function deleteRow(r) {
     let areYouSure = confirm("Are you sure you want to delete this book?")
     if (areYouSure === true) {
-        var i = r.parentNode.rowIndex;
+        var i = r.parentNode.parentNode.parentNode.rowIndex;
         document.getElementById("myTable").deleteRow(i)
     }
     else {
@@ -89,6 +97,11 @@ submitButton.addEventListener("click", () => {
     var title = document.getElementById("bookTitle").value
     var author = document.getElementById("bookAuthor").value
     var pages = document.getElementById("bookPages").value
+    if (title === "" || author === "" || pages === "") {
+        alert("Please don't leave the fields empty")
+        return
+    }
+    else
     var read = document.getElementById("bookRead").checked
     read = read.toString()
     var ABook = new Book(title, author, pages, read)
@@ -117,4 +130,14 @@ document.addEventListener("click", (e) => {
         e.target.setAttribute("class", "isRead")
         e.target.textContent = "Read"
    }
+})
+
+//exit button
+const container = document.querySelector("div.container")
+container.addEventListener("click", (e) => {
+    if (e.target.classList.contains("container") !== true) {
+        return
+    }
+    else
+    formDisplay.style.display = "none"
 })
